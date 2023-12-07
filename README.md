@@ -2,7 +2,7 @@
 
 This repo will develop EPICS information used at the beamline BL3.2U in SLRI.
 
-## EPICS introduction
+## Introduction
 
 ### SLRI 
 https://git.slri.or.th/keerati/gsi-fair-documentation/-/blob/master/note/EPICS_refresh_training_2022.md
