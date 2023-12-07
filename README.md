@@ -4,11 +4,19 @@ This repo will crease the EPICS codes used at the beamline BL3.2U in SLRI.
 
 ## EPICS introduction
 
+### SLRI 
+https://git.slri.or.th/keerati/gsi-fair-documentation/-/blob/master/note/EPICS_refresh_training_2022.md
+
 ### PSI (StreamDevice)
 https://paulscherrerinstitute.github.io/StreamDevice/index.html
 
 ### KEK (User Forum)
 https://cerldev.kek.jp/trac/EpicsUsersJP
+
+## RS device server
+
+### NPort 5600 Series
+https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
 
 ## LabVIEW for EPICS
 
