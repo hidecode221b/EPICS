@@ -13,9 +13,9 @@ https://paulscherrerinstitute.github.io/StreamDevice/index.html
 ### KEK (User Forum)
 https://cerldev.kek.jp/trac/EpicsUsersJP
 
-## RS device server
+## Hardware
 
-### NPort 5600 Series
+### RS device server NPort 5600 Series
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
 
 ### RS232 wiring in DB9
@@ -23,6 +23,12 @@ https://deltamotion.com/support/webhelp/rmcwin/Communication_Types/RMC_CPU_RS232
 
 ### RS232 connector pin layout in DB9
 https://www.decisivetactics.com/support/view?article=db-9-connector-pinout
+
+### Switching hub
+https://www.tp-link.com/th/business-networking/unmanaged-switch/tl-sg1016d/
+
+### Raspberry Pi
+https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
 
 ## LabVIEW for EPICS
 
