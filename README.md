@@ -28,10 +28,19 @@ https://github.com/epics-extensions/CALab
 ### SerialTest
 https://github.com/wh201906/SerialTest
 
-### SerialDebug2
+### SerialDebug2 (jpn)
 http://mdrtech.web.fc2.com/upload/upload.htm
 
 https://zatumemoblog.com/serialdebug2/
+
+### SerialTool (CRC16)
+https://serialtool.com/
+
+### Hex to decimal converter
+https://www.rapidtables.com/convert/number/hex-to-ascii.html
+
+### ASCII table
+http://facweb.cs.depaul.edu/sjost/it212/documents/ascii-pr.htm
 
 
 ## IOC device manual and code
@@ -56,5 +65,11 @@ https://github.com/ISISComputingGroup/EPICS-TPG/tree/master/TPGSup
 
 ### Varian Dual Ion pump controller
 https://adms.fnal.gov/vacuum/manuals/varianip/CD_Ion/PDF/900-094/DUAL.pdf
+
+### Keithley 6482 pico ammeter
+https://github.com/slaclab/Keithley6482/tree/master
+
+### Kodiak Lytron chiller
+https://info.boydcorp.com/hubfs/Thermal/Liquid-Cooling/Boyd-Recirculating-Chiller-Technical-Manual-820-0043.pdf
 
 
