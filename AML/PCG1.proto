@@ -1,0 +1,38 @@
+## https://github.com/mehmetbozdogan/arunNgc2dUhvPressureGauge ##
+
+# amlGauge.proto
+# Proto file for the AML NGC2D Gauge Controller
+# Mehmet Bozdogan 10/11/2017
+#
+################################################################################
+OutTerminator = CR LF;
+ReadTimeout = 100;
+WriteTimeout = 100;
+PollPeriod = 100;
+ReplyTimeout = 1000;
+LockTimeout = 5000;
+ExtraInput = Ignore;
+
+getStatus
+{
+	out "*S0";
+	wait 200;
+	in	"%*9r"
+		"%*7r"
+		","
+		"%*41r";
+}
+
+getPresIG
+{
+	out "*S0";
+	in "%*9r"
+	   "%e"
+	   ","
+	   "%*41r";
+}
+
+setCtrlMode
+{
+	out "%{*R0|*C0}";
+}
