@@ -1,0 +1,24 @@
+## https://github.com/epics-modules/ip/tree/master/ ##
+
+# MultiGuage Compatible protocol for the Varian Dual Controller
+
+OutTerminator = CR LF;
+InTerminator  = CR LF;
+ReplyTimeout  = 1000;
+ReadTimeout   = 1000;
+ExtraInput    = Ignore;
+
+vmeas {
+  out "#\$107?";   
+  in  ">\$107%d";
+}
+imeas {
+  out "#\$108?";
+  in  ">\$108%f";
+}
+
+rhvonoff {
+  out "#\$130?";
+  in  ">\$130%d";
+}
+
