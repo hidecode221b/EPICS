@@ -1,6 +1,6 @@
-# EPICS
+# EPICS development project based on BL3.2U
 
-This repo will develop the EPICS codes used at the beamline BL3.2U in SLRI.
+This repo will develop EPICS information used at the beamline BL3.2U in SLRI.
 
 ## EPICS introduction
 
