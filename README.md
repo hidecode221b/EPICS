@@ -18,6 +18,12 @@ https://cerldev.kek.jp/trac/EpicsUsersJP
 ### NPort 5600 Series
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
 
+### RS232 wiring in DB9
+https://deltamotion.com/support/webhelp/rmcwin/Communication_Types/RMC_CPU_RS232_Port/RS_232_Wiring.htm
+
+### RS232 connector pin layout in DB9
+https://www.decisivetactics.com/support/view?article=db-9-connector-pinout
+
 ## LabVIEW for EPICS
 
 ### CALab
