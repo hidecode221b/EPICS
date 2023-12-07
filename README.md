@@ -30,9 +30,9 @@ https://www.tp-link.com/th/business-networking/unmanaged-switch/tl-sg1016d/
 ### Raspberry Pi
 https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
 
-## LabVIEW for EPICS
+## Software
 
-### CALab
+### CALab (LabVIEW for EPICS)
 https://github.com/epics-extensions/CALab
 
 ## Serial communication analysis (RS232)
