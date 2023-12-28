@@ -81,7 +81,22 @@ https://adms.fnal.gov/vacuum/manuals/varianip/CD_Ion/PDF/900-094/DUAL.pdf
 ### Keithley 6482 pico ammeter
 https://github.com/slaclab/Keithley6482/tree/master
 
+### Keithley 6514 system electrometer
+https://download.tek.com/manual/6514-901-01(D-May2003)(Instruction).pdf
+
 ### Kodiak Lytron chiller
 https://info.boydcorp.com/hubfs/Thermal/Liquid-Cooling/Boyd-Recirculating-Chiller-Technical-Manual-820-0043.pdf
+
+### Wattsine RF power supply
+https://www.wattsine.com/
+
+### Lake Shore Temperature Controller 335
+https://www.lakeshore.com/docs/default-source/product-downloads/335_manual.pdf
+
+
+
+
+
+
 
 
