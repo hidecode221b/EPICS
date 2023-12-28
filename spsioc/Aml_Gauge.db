@@ -1,0 +1,38 @@
+# amlGauge.template
+# Template database AML NGC2D Gauge Controller
+# Mehmet Bozdogan 10/11/2017
+#
+# substitutions:
+# sys    - system
+# sec    - section
+# dev    - device
+# PORT   - device port
+#
+#
+################################################################################
+record(stringin, "$(sys):$(sec):$(dev):STATUS") 
+{
+	field(INP, "@Aml_Gauge.proto getStatus($(sys):$(sec):$(dev)) $(PORT)")
+	field(DTYP, "stream")
+	#field(SCAN, "10 second")
+}
+
+record(ai, "$(sys):$(sec):$(dev):IGPRES") 
+{
+	field(INP, "@Aml_Gauge.proto getPresIG(message) $(PORT)")
+	field(DTYP, "stream")
+	field(SCAN, "1 second")
+}
+
+record(stringin, "message")
+{
+}
+
+record(bo, "$(sys):$(sec):$(dev):CTRLMODE") 
+{
+	field(OUT, "@Aml_Gauge.proto setCtrlMode $(PORT)")
+	field(DTYP, "stream")
+	field(ZNAM, "Local Control")
+	field(ONAM, "Remote Control")
+}
+

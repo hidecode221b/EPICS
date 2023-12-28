@@ -1,0 +1,49 @@
+###########################################################
+# ###                                                 ### #
+# ### EPICS Database for                              ### #
+# ###   Pfeiffer TPG256A gauge controller             ### #
+# ###                                                 ### #
+# ### author: F.Feldbauer                             ### #
+# ###                                                 ### #
+# ### Ref: 1.0; 2011-02-02                            ### #
+# ###                                                 ### #
+# ### macros: H       Header (e.g. 'PANDA:LMD')       ### #
+# ###         N       Name/Task (e.g. 'VACUUM:TP')    ### #
+# ###         CH      Channel number                  ### #
+# ###         PORT    Asyn Interface                  ### #
+###########################################################
+
+record (ai, "$(sys):$(sec):$(dev):P"){
+  field (DTYP, "stream")
+  field (INP,  "@Pfeiffer_TPG256A.proto readout(1,Status) $(PORT)")
+  field (SCAN, "10 second")
+  field (EGU,  "mbar")
+  # Alarm Limits
+  field (HIHI, "800")
+  field (HIGH, "775")
+  # Alarm Severities
+  field (HHSV, "MAJOR")
+  field (HSV,  "MINOR")
+  field (LSV,  "NO_ALARM")
+  field (LLSV, "NO_ALARM")
+}
+
+record(mbbi, "$(sys):$(sec):$(dev):Status"){
+  # Value Strings
+  field (ZRST, "Data OK")
+  field (ONST, "Underrange")
+  field (TWST, "Overrange")
+  field (THST, "Sensor Error")
+  field (FRST, "Sensor Off")
+  field (FVST, "No Sensor")
+  field (SXST, "Ident Error")
+  # Alarm Severities
+  field (ZRSV, "NO_ALARM")
+  field (ONSV, "MINOR")
+  field (TWSV, "MINOR")
+  field (THSV, "MAJOR")
+  field (FRSV, "NO_ALARM")
+  field (FVSV, "NO_ALARM")
+  field (SXSV, "MAJOR")
+}
+

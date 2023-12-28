@@ -1,0 +1,40 @@
+
+OutTerminator = CR LF;
+InTerminator  = CR LF;
+ReplyTimeout  = 1000;
+ReadTimeout   = 1000;
+ExtraInput    = Ignore;
+
+getOutCurr {
+  out "READ?";
+  #in "%e,%*39c";
+  in "%(\$1:Curr)e,%(\$1:no2)e,%(\$1:no3)e";
+  @init {out "CONF:CURR:DC";;}
+}
+
+getID {
+  out "*IDN?"; in "%s";
+  @init {out "*IDN?"; in "%s";}
+}
+
+setReset {
+  out "*RST";
+}
+
+setOpe {
+  out "*OPC";
+}
+
+setAbort {
+  out "ABORT";
+}
+
+setInit {
+  out "INIT";
+}
+
+setErrClr {
+  out "*CLS";
+  out "OUTP:PROT:CLE";
+}
+

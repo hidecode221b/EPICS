@@ -1,0 +1,64 @@
+
+
+##############################
+# ### Exception Handlers ### #
+##############################
+
+#####################
+# ### Protocols ### #
+#####################
+record(bo, "$(sys):$(sec):$(dev):setRemote")
+{
+  field(DESC, "set rem")
+  field(DTYP, "stream")
+  field(OUT, "@Agilent_34401A.proto setRemote $(PORT)")
+  field(ZNAM, "Local")
+  field(ONAM, "Remote")
+  field(PINI, "YES")
+  field(VAL, "1")
+}
+
+record(ai, "$(sys):$(sec):$(dev):getOutVolt")
+{
+  field(DTYP, "stream")
+  field(INP, "@Agilent_34401A.proto getOutVolt $(PORT)")
+  field(PREC, "10")
+  field(SCAN, "2 second")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setInit")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Agilent_34401A.proto setInit $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setAbort")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Agilent_34401A.proto setAbort $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setOpe")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Agilent_34401A.proto setOpe $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setErrClr")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Agilent_34401A.proto setErrClr $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setReset")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Agilent_34401A.proto setReset $(PORT)")
+}
+
+record (stringin, "$(sys):$(sec):$(dev):IDN") {
+  field (DTYP, "stream")
+  field (INP, "@Agilent_34401A.proto getID $(PORT)")
+}
+
+

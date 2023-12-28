@@ -1,0 +1,47 @@
+# VarianDualIP.db
+# Template database for Varian Dual pump controller
+# Pete Owens - 17/9/03
+# Mark Rivers - 1/March/2020
+#
+# substitutions:
+# P       - Prefix
+# R       - Record
+# PORT    - asyn serial port name
+# CHAN    - channel (1 or 2)
+# HIGH    - high pressure limit (exponent: limit = 1.0e$(HIGH)
+# HIHI    - hihi pressure limit (exponent: limit = 1.0e$(HIHI)
+################################################################################
+# HV on/off
+#
+
+record(bi, "$(sys):$(sec):$(dev):HV_RBV")
+{
+    field(DESC, "HV on/off")
+    field(DTYP, "stream")
+    field(INP,  "@Varian_DualIP.proto rhvonoff($(CHAN)) $(PORT) 0")
+    field(ZNAM, "Off")
+    field(ZSV, "MINOR")
+    field(ONAM, "On")
+    field(OSV, "NO_ALARM")
+}
+
+################################################################################
+# Voltage
+#
+record(ai, "$(sys):$(sec):$(dev):V")
+{
+    field(DESC, "Measured Voltage")
+    field(DTYP, "stream")
+    field(INP,  "@Varian_DualIP.proto vmeas($(CHAN)) $(PORT) 0")
+    field(EGU,  "V")
+}
+################################################################################
+# Current
+#
+record(ai, "$(sys):$(sec):$(dev):I")
+{
+    field(DESC, "Measured Current")
+    field(DTYP, "stream")
+    field(INP,  "@Varian_DualIP.proto imeas($(CHAN)) $(PORT) 0")
+    field(EGU,  "A")
+}

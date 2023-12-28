@@ -1,0 +1,43 @@
+
+OutTerminator = CR LF;
+InTerminator  = CR LF;
+ReplyTimeout  = 3000;
+ReadTimeout   = 1000;
+ExtraInput    = Ignore;
+
+getOutVolt {
+  out "MEAS:VOLT:DC? 10, 0.003";
+  in "%E";
+  @init {out "MEAS:VOLT:DC? 10, 0.0003"; in "%E";}
+}
+
+setRemote {
+  out "SYST:%{LOC|REM}";
+}
+
+getID {
+  out "*IDN?"; in "%s";
+  @init {out "*IDN?"; in "%s";}
+}
+
+setReset {
+  out "*RST";
+}
+
+setOpe {
+  out "*OPC";
+}
+
+setAbort {
+  out "ABORT";
+}
+
+setInit {
+  out "INIT";
+}
+
+setErrClr {
+  out "*CLS";
+  out "OUTP:PROT:CLE";
+}
+

@@ -1,0 +1,63 @@
+
+
+##############################
+# ### Exception Handlers ### #
+##############################
+
+#####################
+# ### Protocols ### #
+#####################
+
+
+record(ai, "$(sys):$(sec):$(dev):getOutCurr")
+{
+  field(DTYP, "stream")
+  field(INP, "@Keithley_6514.proto getOutCurr($(sys):$(sec):$(dev)) $(PORT)")
+  field(SCAN, "2 second")
+}
+record(ai, "$(sys):$(sec):$(dev):Curr")
+{
+}
+record(ai, "$(sys):$(sec):$(dev):no2")
+{
+}
+record(ai, "$(sys):$(sec):$(dev):no3")
+{
+}
+
+record(bo, "$(sys):$(sec):$(dev):setInit")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Keithley_6514.proto setInit $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setAbort")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Keithley_6514.proto setAbort $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setOpe")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Keithley_6514.proto setOpe $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setErrClr")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Keithley_6514.proto setErrClr $(PORT)")
+}
+
+record(bo, "$(sys):$(sec):$(dev):setReset")
+{
+  field(DTYP, "stream")
+  field(OUT, "@Keithley_6514.proto setReset $(PORT)")
+}
+
+record (stringin, "$(sys):$(sec):$(dev):IDN") {
+  field (DTYP, "stream")
+  field (INP, "@Keithley_6514.proto getID $(PORT)")
+}
+
+
