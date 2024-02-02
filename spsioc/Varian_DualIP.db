@@ -13,6 +13,15 @@
 ################################################################################
 # HV on/off
 #
+record(bo, "$(sys):$(sec):$(dev):HV")
+{
+    field(DESC, "HV on/off")
+    field(DTYP, "stream")
+    field(OUT,  "@Varian_DualIP.proto whvonoff($(CHAN)) $(PORT) 0")
+    field(FLNK, "$(sys):$(sec):$(dev):P")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
 
 record(bi, "$(sys):$(sec):$(dev):HV_RBV")
 {
@@ -23,6 +32,8 @@ record(bi, "$(sys):$(sec):$(dev):HV_RBV")
     field(ZSV, "MINOR")
     field(ONAM, "On")
     field(OSV, "NO_ALARM")
+    field(SCAN, "1 second")
+    field(FLNK, "$(sys):$(sec):$(dev):V")
 }
 
 ################################################################################
@@ -34,6 +45,7 @@ record(ai, "$(sys):$(sec):$(dev):V")
     field(DTYP, "stream")
     field(INP,  "@Varian_DualIP.proto vmeas($(CHAN)) $(PORT) 0")
     field(EGU,  "V")
+    field(FLNK, "$(sys):$(sec):$(dev):I")
 }
 ################################################################################
 # Current
@@ -44,4 +56,69 @@ record(ai, "$(sys):$(sec):$(dev):I")
     field(DTYP, "stream")
     field(INP,  "@Varian_DualIP.proto imeas($(CHAN)) $(PORT) 0")
     field(EGU,  "A")
+    field(FLNK, "$(sys):$(sec):$(dev):P")
 }
+################################################################################
+# Pressure
+#
+record(ai, "$(sys):$(sec):$(dev):P")
+{
+    field(DESC, "Measured Pressure")
+    field(DTYP, "stream")
+    field(INP,  "@Varian_DualIP.proto pmeas($(CHAN)) $(PORT) 0")
+    field(EGU,  "Torr")
+    field(HOPR, "1e3")
+    field(LOPR, "1e-12")
+    field(HIHI, "1.0e$(HIHI)")
+    field(HIGH, "1.0e$(HIGH)")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LSV,  "NO_ALARM")
+    field(LOLO, "1e-12")
+    field(LLSV, "MAJOR")
+    field(FLNK, "$(sys):$(sec):$(dev):PLOG")
+}
+
+record(calc, "$(sys):$(sec):$(dev):PLOG")
+{
+    field(DESC, "log Pressure")
+    field(EGU,  "log")
+    field(CALC, "LOG(A)")
+    field(INPA, "$(sys):$(sec):$(dev):P")
+    field(HOPR, "3")
+    field(LOPR, "-12")
+    field(HIHI, "$(HIHI)")
+    field(HIGH, "$(HIGH)")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LSV,  "NO_ALARM")
+    field(LLSV, "NO_ALARM")
+    field(FLNK, "$(sys):$(sec):$(dev):SP1")
+}
+################################################################################
+# Setpoints
+#
+record(ai, "$(sys):$(sec):$(dev):SP1") {
+    field(DESC, "Setpoint 1")
+    field(DTYP, "stream")
+    field(INP,  "@Varian_DualIP.proto rsetpt1($(CHAN)) $(PORT) 0")
+    field(FLNK, "$(sys):$(sec):$(dev):SP2")
+}
+record(ao, "$(sys):$(sec):$(dev):SETSP1") {
+    field(DESC, "Set Setpoint 1")
+    field(DTYP, "stream")
+    field(OUT,  "@Varian_DualIP.proto wsetpt1($(CHAN)) $(PORT) 0")
+    field(FLNK, "$(sys):$(sec):$(dev):SP1")
+}
+record(ai, "$(sys):$(sec):$(dev):SP2") {
+    field(DESC, "Setpoint 2")
+    field(DTYP, "stream")
+    field(INP,  "@Varian_DualIP.proto rsetpt2($(CHAN)) $(PORT) 0")
+}
+record(ao, "$(sys):$(sec):$(dev):SETSP2") {
+    field(DESC, "Set Setpoint 2")
+    field(DTYP, "stream")
+    field(OUT,  "@Varian_DualIP.proto wsetpt2($(CHAN)) $(PORT) 0")
+    field(FLNK, "$(sys):$(sec):$(dev):SP2")
+}
+################################################################################
