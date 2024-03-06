@@ -102,9 +102,9 @@ The latest 335 model has GPIB or USB interface. USB interface cannot be accessed
 
 https://www.lakeshore.com/docs/default-source/product-downloads/335_manual.pdf
 
-### NI multifunction card for temperature monitor at BL based on the thermocouples
+### NI SCB-68 shielded I/O connector block for the multifunction card
 
-The connecting box of the multifunction card has an internal temperature sensor to calibrate the inputs from the TC.  The caLab is used to get the temp.
+The connecting box of the multifunction card has an internal temperature sensor (cold-junction compensation circuitry) to calibrate the inputs from the TC.  The caLab is used to get the temp.
 
 
 
