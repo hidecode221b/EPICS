@@ -1,6 +1,9 @@
 # EPICS development project based on BL3.2U
 
-This repo will develop EPICS information used at the beamline BL3.2U in SLRI.
+## Background
+
+EPICS is widely used in the monitoring and control system in the large facility, because it is scalable to implement the devices over the network, user-friendly to code the scripts interfaced with RS232/485, stable to run the long-term operation in LINUX at low cost, and reliable to streamline the monitoring and operation among the instruments. This repo will collect EPICS information used at the beamline BL3.2U in SLRI as a first protype model. 
+
 
 ## Introduction
 
@@ -12,6 +15,8 @@ https://paulscherrerinstitute.github.io/StreamDevice/index.html
 
 ### KEK (User Forum)
 https://cerldev.kek.jp/trac/EpicsUsersJP
+
+
 
 ## Hardware
 
@@ -29,6 +34,7 @@ https://www.tp-link.com/th/business-networking/unmanaged-switch/tl-sg1016d/
 
 ### Raspberry Pi
 https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
+
 
 ## Software
 
@@ -91,7 +97,16 @@ https://info.boydcorp.com/hubfs/Thermal/Liquid-Cooling/Boyd-Recirculating-Chille
 https://www.wattsine.com/
 
 ### Lake Shore Temperature Controller 335
+
+The latest 335 model has GPIB or USB interface. USB interface cannot be accessed without the driver from the Lake Shore. The caLab is used to get the temp.
+
 https://www.lakeshore.com/docs/default-source/product-downloads/335_manual.pdf
+
+### NI multifunction card for temperature monitor at BL based on the thermocouples
+
+The connecting box of the multifunction card has an internal temperature sensor to calibrate the inputs from the TC.  The caLab is used to get the temp.
+
+
 
 
 
