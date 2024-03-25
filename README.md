@@ -12,6 +12,11 @@ EPICS resources are available online. SLRI held the training of EPICS implementa
 ### SLRI (internal training)
 https://git.slri.or.th/keerati/gsi-fair-documentation/-/blob/master/note/EPICS_refresh_training_2022.md
 
+### Official site
+https://epics-controls.org/
+
+https://epics.anl.gov/
+
 ### PSI (StreamDevice)
 https://paulscherrerinstitute.github.io/StreamDevice/index.html
 
@@ -180,6 +185,22 @@ NI SCB-68 is used to monitor the temperature nearby the PES station. The connect
 
 #### Manual
 https://biomech.hacettepe.edu.tr/manuals/NI%206052E%20User%20Manual.pdf
+
+
+## Hints to find the script online
+First of all, find the template from the Github linked below.
+
+https://github.com/epics-modules/ip/blob/master/ipApp/Db/
+
+Second, search in the tech-talk.
+
+https://epics.anl.gov/
+
+Third, google and search in github.
+
+Fourth, dig into KEK Tobiyama site.
+
+http://ahfb1.kek.jp/~tobiyama/epics/default.html
 
 
 ## Progress and summary
