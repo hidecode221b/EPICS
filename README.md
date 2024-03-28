@@ -40,9 +40,9 @@ https://cerldev.kek.jp/trac/EpicsUsersJP
 
 ## Hardware
 
-Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. IOC devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more RS servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
+Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. IOC devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more serial device servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
 
-### RS device server NPort 5650-16
+### Serial device server NPort 5650-16
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
 
 ### RS232 wiring in DB9
@@ -138,7 +138,7 @@ https://github.com/epics-modules/ip/blob/6206afedb94db491a385ffd0c66f9223140a503
 
 ### Pfeiffer CCG TPG300 and full-range gauge TPG261 controllers
 
-CCG controllers are used in the PES MBE and FEAL chambers. CCG controllers are also connected to the EPICS in the accelerator network. The RS device server can be configured to connect the EPICS in BL3.2U, which was confirmed before the ACC takeover.
+CCG controllers are used in the PES MBE and FEAL chambers. CCG controllers are also connected to the EPICS in the accelerator network. The serial device server can be configured to connect the EPICS in BL3.2U, which was confirmed before the ACC takeover.
 
 #### Manual
 http://lmu.web.psi.ch/docu/manuals/bulk_manuals/Pfeiffer/TPG_300.pdf
@@ -233,7 +233,7 @@ http://ahfb1.kek.jp/~tobiyama/epics/default.html
 
 ## Progress and summary
 
-`20240306` 6 devices are connected to the EPICS via the RS device server, and 2 IOCs are connected online via CALab from the Windows PC in the PES station. The RS device server in the beamline control station connects and shares the vacuum pressures from 11 CCG gauges.
+`20240306` 6 devices are connected to the EPICS via the serial device server, and 2 IOCs are connected online via CALab from the Windows PC in the PES station. The serial device server in the beamline control station connects and shares the vacuum pressures from 11 CCG gauges.
 
 
 
