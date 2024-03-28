@@ -2,16 +2,15 @@
 
 ## Background
 
-EPICS is widely used in the monitoring and control system in the large scientific and production facilities, because it is scalable to implement the huge number of devices over the ethernet network, user-friendly to code the scripts interfaced with RS232/485/GPIB, stable to run the long-term and minimum-resource operation based on LINUX even in the RaspberryPi, and reliable to streamline the monitoring and feedback operation among the devices. This repo will collect EPICS information used at BL3.2U in SLRI as a first prototype EPICS monitoring system in the beamline. 
+EPICS is widely used in the monitoring and control system in the large scientific and production facilities, because it is scalable to implement the huge number of devices over the ethernet network, user-friendly to code the scripts interfaced with RS232/485/GPIB, stable to run the long-term and minimum-resource operation based on LINUX even in the Raspberry Pi, and reliable to streamline the monitoring and feedback operation among the devices. This repo will collect EPICS information used at BL3.2U in SLRI as a first prototype EPICS monitoring system in the beamline. 
 
-Most of beamline vacuum and optics status are monitored in the LabVIEW-based program currently for the beamline interlock system. The vacuum and temperature status in the end-stations of the beamline are not monitored or stored as a historical record, which plays a critical role in the investigation of problems happened during the user service and electrical failure in the facility. The vacuum pressure and pumping status in the soft X-ray beamline give us a hint to prevent the critical damage in the beamline system, and suggest the maintenance period of the vacuum system prior to the significant incident.
+Most of beamline vacuum and optics status are monitored in the LabVIEW-based program currently for the beamline interlock system. The vacuum and temperature status in the end-stations of the beamline are not monitored or stored as a historical record, which plays a critical role in the investigation of problems happened during the user service and electrical failure in the facility. The historical records of vacuum pressure and pumping status in the soft X-ray beamline give us a hint to prevent a human error in the beamline system, and suggest a proper maintenance timing of the vacuum system prior to a significant incident and critical damage.
 
-In the first stage of EPICS development, we will implement the local network for EPICS monitoring system. In the second stage, we will implement the database of records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase.
+## Target and plan
 
+In the first stage of EPICS development, we will implement the local network for EPICS monitoring system with 5 input and output controllers (IOCs) at least. In the second stage, we will implement the database of records and establish the analytical procedure of the records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase if we have sufficient resources such as the motors, temperature monitors, and so on.
 
-## Target
-
-The input and output controllers (IOCs) correspond to the devices under the EPICS monitoring system. In this stage, we connected the IOCs as many as we can at the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department.
+IOCs correspond to the devices under the EPICS control and monitoring system. In the first stage, we connected the 5 IOCs at least in the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department in the section. 5 IOCs emcompass the full-range gauge, cold-cathod gauge, ionization gauge, ion-pump controller, and electrometer/multimeter. Some devices cannot be accessible from the RS232 interface, so the LabVIEW CALab is used to get the record from the IOCs such as the diode-type and thermo-couple temperature monitors.
 
 The network switching hub is also available, so we can connect the other serial device servers to the accelarator EPICS network. The control software section (CSS) established the beamline 3.2 otpics vacuum monitoring based on the serial device server with the NI LabVIEW DSC server previously, and it is now under control of the accelerator EPICS network to monitor the front-end pressure during the beamline alignment and injection inefficiency. Before the injection inefficiency took place, we successfully established the local EPICS network with two serial device servers from the beamline 3.2 optics vaccum and 3.2Ua end-station monitoring system.
 
@@ -37,7 +36,7 @@ https://cerldev.kek.jp/trac/EpicsUsersJP
 
 ## Hardware
 
-Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. IOC devices are connected to the RS server at each end station plus BL control station. PES has a RS server 16 channels, and 2 more RS servers will be implemented in PEEM and XPS stations. BL control station has a RS server implemented by the control software section, but the accelerator section takes over the server control. EPICS is primary running in the Raspberry Pi, and caLab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
+Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. IOC devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more RS servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
 
 ### RS device server NPort 5600 Series
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
@@ -56,6 +55,8 @@ https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
 
 
 ## Software
+
+The following software is useful to develop the IOC communications.
 
 ### CALab (LabVIEW for EPICS)
 CALab is indispenable when the device has an interface only with USB or PCI for the Windows program. It is also useful to preformat the data received prior to sharing the variables.
@@ -84,6 +85,11 @@ SerialTool can add various CRC as the sum check protocols. The free version is l
 
 https://serialtool.com/
 
+
+## String convertion
+
+EPICS utilizes the HEX, decimal, and ASCII strings. The references of these strings are listed below.
+
 ### Hex to decimal converter
 https://www.rapidtables.com/convert/number/hex-to-ascii.html
 
@@ -92,6 +98,8 @@ http://facweb.cs.depaul.edu/sjost/it212/documents/ascii-pr.htm
 
 
 ## IOC device manual and script
+
+The following devices are ppotential candidates for IOCs in the EPICS monitoring system. The detailed resources are listed below.
 
 ### AML PCG1 Vacuum Ion Gauge
 The ion gauge is used in the analysis chamber of the PES station. The connection is established, but the string does not match in sometimes.
@@ -197,7 +205,8 @@ NI SCB-68 is used to monitor the temperature nearby the PES station. The connect
 https://biomech.hacettepe.edu.tr/manuals/NI%206052E%20User%20Manual.pdf
 
 
-## Hints to find the script online
+## Guide to search the streamline scripts online
+
 First of all, find the template from the Github linked below.
 
 https://github.com/epics-modules/ip/blob/master/ipApp/Db/
