@@ -1,5 +1,9 @@
 # EPICS development project based on BL3.2U
 
+## Preface
+
+This report is a commissioning report, and revised upon the development accordingly.
+
 ## Background
 
 EPICS is widely used in the monitoring and control system in the large scientific and production facilities, because it is scalable to implement the huge number of devices over the ethernet network, user-friendly to code the scripts interfaced with RS232/485/GPIB, stable to run the long-term and minimum-resource operation based on LINUX even in the Raspberry Pi, and reliable to streamline the monitoring and feedback operation among the devices. This repo will collect EPICS information used at BL3.2U in SLRI as a first prototype EPICS monitoring system in the beamline. 
@@ -56,11 +60,11 @@ https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
 
 ## Software
 
-The following software is useful to develop the IOC communications. The st.cmd file lists the connection for each device according to the following syntax;
-
-System : Section : Device.
-
-For example, the CCG gauge at MBE in BL3.2Ua is BL3.2Ua : MBE : CCG.
+The following software is useful to develop the IOC communications. The st.cmd file specifies the connection to each device according to the following syntax;
+```
+sys=System, sec=Section, dev=Device.
+```
+For example, the CCG gauge at MBE in BL3.2Ua is `sys=BL32Ua`,`sec=MBE`,`dev=CCG`.
 
 
 ### CALab (LabVIEW for EPICS)
