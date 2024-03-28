@@ -2,12 +2,22 @@
 
 ## Background
 
-EPICS is widely used in the monitoring and control system in the large facility, because it is scalable to implement the devices over the network, user-friendly to code the scripts interfaced with RS232/485, stable to run the long-term operation in LINUX at low cost, and reliable to streamline the monitoring and operation among the instruments. This repo will collect EPICS information used at BL3.2U in SLRI as a first protype model in the beamline. 
+EPICS is widely used in the monitoring and control system in the large scientific and production facilities, because it is scalable to implement the huge number of devices over the ethernet network, user-friendly to code the scripts interfaced with RS232/485/GPIB, stable to run the long-term and minimum-resource operation based on LINUX even in the RaspberryPi, and reliable to streamline the monitoring and feedback operation among the devices. This repo will collect EPICS information used at BL3.2U in SLRI as a first prototype EPICS monitoring system in the beamline. 
+
+Most of beamline vacuum and optics status are monitored in the LabVIEW-based program currently for the beamline interlock system. The vacuum and temperature status in the end-stations of the beamline are not monitored or stored as a historical record, which plays a critical role in the investigation of problems happened during the user service and electrical failure in the facility. The vacuum pressure and pumping status in the soft X-ray beamline give us a hint to prevent the critical damage in the beamline system, and suggest the maintenance period of the vacuum system prior to the significant incident.
+
+In the first stage of EPICS development, we will implement the local network for EPICS monitoring system. In the second stage, we will implement the database of records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase.
 
 
-## Introduction
+## Target
 
-EPICS resources are available online. SLRI held the training of EPICS implementation several times. The User forum encompsses trick and tip.
+The input and output controllers (IOCs) correspond to the devices under the EPICS monitoring system. In this stage, we connected the IOCs as many as we can at the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department.
+
+The network switching hub is also available, so we can connect the other serial device servers to the accelarator EPICS network. The control software section (CSS) established the beamline 3.2 otpics vacuum monitoring based on the serial device server with the NI LabVIEW DSC server previously, and it is now under control of the accelerator EPICS network to monitor the front-end pressure during the beamline alignment and injection inefficiency. Before the injection inefficiency took place, we successfully established the local EPICS network with two serial device servers from the beamline 3.2 optics vaccum and 3.2Ua end-station monitoring system.
+
+## Resources and information of EPICS
+
+EPICS resources are available online. SLRI held the training of EPICS implementation several times. The User forum encompsses trick and tip to tackle with the technical issues in the serial communication with devices.
 
 ### SLRI (internal training)
 https://git.slri.or.th/keerati/gsi-fair-documentation/-/blob/master/note/EPICS_refresh_training_2022.md
