@@ -10,9 +10,9 @@ Most of beamline vacuum and optics status are monitored in the LabVIEW-based pro
 
 In the first stage of EPICS development, we will implement the local network for EPICS monitoring system with 5 input and output controllers (IOCs) at least. In the second stage, we will implement the database of records and establish the analytical procedure of the records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase if we have sufficient resources such as the motors, temperature monitors, and so on.
 
-IOCs correspond to the devices under the EPICS control and monitoring system. In the first stage, we connected the 5 IOCs at least in the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department in the section. 5 IOCs emcompass the full-range gauge, cold-cathod gauge, ionization gauge, ion-pump controller, and electrometer/multimeter. Some devices cannot be accessible from the RS232 interface, so the LabVIEW CALab is used to get the record from the IOCs such as the diode-type and thermo-couple temperature monitors.
+IOCs correspond to the devices under the EPICS control and monitoring system. In the first stage, we connected the 5 IOCs at least in the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department in the section. 5 IOCs emcompass the full-range gauge, cold-cathod gauge (CCG), ionization gauge, ion-pump controller, and electrometer/multimeter. Some devices cannot be accessible from the RS232 interface, so the LabVIEW CALab is used to get the record from the IOCs such as the diode-type and thermo-couple temperature monitors.
 
-The network switching hub is also available, so we can connect the other serial device servers to the accelarator EPICS network. The control software section (CSS) established the beamline 3.2 otpics vacuum monitoring based on the serial device server with the NI LabVIEW DSC server previously, and it is now under control of the accelerator EPICS network to monitor the front-end pressure during the beamline alignment and injection inefficiency. Before the injection inefficiency took place, we successfully established the local EPICS network with two serial device servers from the beamline 3.2 optics vaccum and 3.2Ua end-station monitoring system.
+The network switching hub is also available, so we can connect the other serial device servers to the accelarator EPICS network. The control software section (CSS) established the beamline 3.2 otpics vacuum monitoring for 11 CCG gauges based on the serial device server with the NI LabVIEW DSC server previously, and it is now under control of the accelerator EPICS network to monitor the front-end pressure during the beamline alignment and injection inefficiency. Before the injection inefficiency took place, we successfully established the local EPICS network with two serial device servers from the beamline 3.2 optics vaccum and 3.2Ua end-station monitoring system.
 
 ## Resources and information of EPICS
 
@@ -38,7 +38,7 @@ https://cerldev.kek.jp/trac/EpicsUsersJP
 
 Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. IOC devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more RS servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
 
-### RS device server NPort 5600 Series
+### RS device server NPort 5650-16
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
 
 ### RS232 wiring in DB9
@@ -47,7 +47,7 @@ https://deltamotion.com/support/webhelp/rmcwin/Communication_Types/RMC_CPU_RS232
 ### RS232 connector pin layout in DB9
 https://www.decisivetactics.com/support/view?article=db-9-connector-pinout
 
-### Switching hub
+### Switching hub: TP-link TL-SG1016 16-port gigabit switch
 https://www.tp-link.com/th/business-networking/unmanaged-switch/tl-sg1016d/
 
 ### Raspberry Pi
@@ -56,7 +56,12 @@ https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
 
 ## Software
 
-The following software is useful to develop the IOC communications.
+The following software is useful to develop the IOC communications. The st.cmd file lists the connection for each device according to the following syntax;
+
+System : Section : Device.
+
+For example, the CCG gauge at MBE in BL3.2Ua is BL3.2Ua : MBE : CCG.
+
 
 ### CALab (LabVIEW for EPICS)
 CALab is indispenable when the device has an interface only with USB or PCI for the Windows program. It is also useful to preformat the data received prior to sharing the variables.
@@ -113,9 +118,9 @@ https://arunmicro.com/products/ion-gauge-controller/
 https://github.com/mehmetbozdogan/arunNgc2dUhvPressureGauge
 
 
-### Agilent Digital Multimeter 34410A
+### Agilent Digital Multimeter 34401A 6-1/2 digit multimeter
 
-Multimeter is tested as one of IOCs devices.
+Multimeter is tested as one of IOCs devices. The only one of voltage, current, and registivity can be monitored at a time.
 
 #### Manual
 http://instructor.physics.lsa.umich.edu/adv-labs/Tools_Resources/HP%2034401A%20user%27s%20guide.pdf
@@ -144,7 +149,7 @@ https://panda-repo.gsi.de/pandadcs/epics-files/-/tree/master/
 https://github.com/ISISComputingGroup/EPICS-TPG/tree/master/TPGSup
 
 
-### Varian Dual Ion pump controller
+### Varian Dual Ion pump controller: 929-7014-M003
 
 The ion pump controller is used in the PES MBE chamber.
 
@@ -167,7 +172,7 @@ https://download.tek.com/manual/6514-901-01(D-May2003)(Instruction).pdf
 #### Script
 https://github.com/slaclab/Keithley6482/tree/master
 
-### Kodiak Lytron chiller
+### Kodiak Lytron chiller: RC045H03CG3M439
 
 Chiller is used to cool down the cryopump compressor. The connection is established but the communication failed.
 
@@ -197,7 +202,7 @@ https://www.lakeshore.com/docs/default-source/product-downloads/335_manual.pdf
 https://github.com/epics-modules/ip/blob/master/ipApp/Db/LakeShore335.db
 
 
-### NI SCB-68 shielded I/O connector block for the multifunction card PCI-6052E
+### NI SCB-68 shielded I/O connector block for the NI multifunction card PCI-6052E
 
 NI SCB-68 is used to monitor the temperature nearby the PES station. The connecting box of the multifunction card has an internal temperature sensor (cold-junction compensation circuitry) to calibrate the inputs from the TC.  The caLab is used to get the temperature from the VI program.
 
@@ -205,7 +210,7 @@ NI SCB-68 is used to monitor the temperature nearby the PES station. The connect
 https://biomech.hacettepe.edu.tr/manuals/NI%206052E%20User%20Manual.pdf
 
 
-## Guide to search the streamline scripts online
+## Guide to search the streamdevice scripts online
 
 First of all, find the template from the Github linked below.
 
