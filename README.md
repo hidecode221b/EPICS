@@ -2,7 +2,7 @@
 
 ## Preface
 
-This report is a commissioning report, and revised upon the development accordingly.
+This report is a progress report of the first phase as of Feb. 2024, and revised upon the development progress accordingly.
 
 ## Background
 
@@ -42,7 +42,7 @@ https://cerldev.kek.jp/trac/EpicsUsersJP
 
 Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. IOC devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more serial device servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
 
-### Serial device server NPort 5650-16
+### Serial device server: MOXA NPort 5650-16
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
 
 ### RS232 wiring in DB9
@@ -214,7 +214,7 @@ NI SCB-68 is used to monitor the temperature nearby the PES station. The connect
 https://biomech.hacettepe.edu.tr/manuals/NI%206052E%20User%20Manual.pdf
 
 
-## Guide to search the streamdevice scripts online
+## Guide to search the StreamDevice scripts online
 
 First of all, find the template from the Github linked below.
 
