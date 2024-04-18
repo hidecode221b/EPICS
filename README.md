@@ -12,7 +12,7 @@ Most of beamline vacuum and optics status are monitored in the LabVIEW-based pro
 
 ## Target and plan
 
-In the first stage of EPICS development, we will implement the local network for EPICS monitoring system with 5 input and output controllers (IOCs) at least. In the second stage, we will implement the database of records and establish the analytical procedure of the records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase if we have sufficient resources such as the motors, temperature monitors, and so on.
+In the first stage of EPICS development, we will implement the local network for EPICS monitoring system with 5 input and output controller (IOC) devices at least. In the second stage, we will implement the database of records and establish the analytical procedure of the records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase if we have sufficient resources such as the motors, temperature monitors, and so on.
 
 IOCs correspond to the devices under the EPICS control and monitoring system. In the first stage, we connected the 5 IOCs at least in the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department in the section. 5 IOCs emcompass the full-range gauge, cold-cathod gauge (CCG), ionization gauge, ion-pump controller, and electrometer/multimeter. Some devices cannot be accessible from the RS232 interface, so the LabVIEW CALab is used to get the record from the IOCs such as the diode-type and thermo-couple temperature monitors.
 
@@ -33,9 +33,16 @@ https://epics.anl.gov/
 ### PSI (StreamDevice)
 https://paulscherrerinstitute.github.io/StreamDevice/index.html
 
-### KEK (User Forum)
+### KEK (User Forum JPN)
 https://cerldev.kek.jp/trac/EpicsUsersJP
 
+https://www-linac.kek.jp/cont/epics/
+
+### Academic slave project (jpn)
+http://inspire.starfree.jp/epics/rst/epics_index.html
+
+### note_project (jpn)
+https://note.com/dev_associate
 
 
 ## Hardware
@@ -71,6 +78,9 @@ For example, the CCG gauge at MBE in BL3.2Ua is `sys=BL32Ua`,`sec=MBE`,`dev=CCG`
 CALab is indispenable when the device has an interface only with USB or PCI for the Windows program. It is also useful to preformat the data received prior to sharing the variables.
 
 https://github.com/epics-extensions/CALab
+
+### PyEpics
+https://pypi.org/project/pyepics/
 
 
 ## Serial communication analysis (RS232)
