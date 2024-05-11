@@ -11,7 +11,7 @@ https://docs.epics-controls.org/en/latest/getting-started/installation-linux.htm
 - install homebrew https://brew.sh/
 - install Xcode from AppStore
 
-After installation, `sudo xcodebuild -license` with password and `agree` in the license
+After installation, `sudo xcodebuild -license` with password and `agree` in the license of Xcode.
 
 ```
 brew install make
@@ -45,14 +45,23 @@ Paste it in .zshrc, and ":w" for save and ":q" for quit vi
 
 https://www.gi.ce.t.kyoto-u.ac.jp/user/susaki/command/vi.html
 
-### Test
+### Testing
+
 Close the terminal and open it again
 ```
 softIOC
 > epics
 ```
 
-Create "test.db" and save it in db folder. Move the current directory to db folder, and type.
+Create "test.db" and save it in db folder. 
+```
+record(ai, "temperature:water")
+{
+    field(DESC, "Water temperature in the fish tank")
+}
+```
+
+Move the current directory to db folder, and type.
 
 ```
 softIoc -d test.db
@@ -77,7 +86,7 @@ pip3 install pyepics
 ```
 
 
-### Test
+### Testing
 
 Open new terminal window and type `python3`
 
@@ -104,5 +113,39 @@ pv.get()
 pv.put(40)
 ```
 
+## Setup command file
+
+Section 5 from the link
+https://mdavidsaver.github.io/epics-doc/epics-starting.html
+
+### Testing
+
+Create a file sum.db or download https://github.com/mdavidsaver/epics-doc/raw/master/starting/sum.db
+
+Create sum.cmd
+```
+dbLoadRecords("sum.db","INST=calc")
+iocInit
+```
+
+Run the sum.cmd
+```
+softIoc sum.cmd
+```
+
+Open new terminal window and try calc
+```
+caput calc:a 2
+caput calc:b 10
+caget calc:sum
+```
+
+Python3
+```
+from epics import caget, caput, cainfo
+caput('calc:a',2)
+caput('calc:b',10)
+caget('calc:sum')
+```
 
 
