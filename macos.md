@@ -2,6 +2,8 @@
 
 ## Installation
 
+This is a note for EPICS on MacOS MacBook Pro 13-inch, 2019 (Intel Core i5) with Python version 3.9.6.
+
 ### Preparation
 
 https://docs.epics-controls.org/en/latest/getting-started/installation-linux.html
