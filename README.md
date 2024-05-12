@@ -12,9 +12,9 @@ Most of beamline vacuum and optics status are monitored in the LabVIEW-based pro
 
 ## Target and plan
 
-In the first stage of EPICS development, we will implement the local network for EPICS monitoring system with 5 channel access (CA) from devices at least. In the second stage, we will implement the database of records and establish the analytical procedure of the records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase if we have sufficient resources such as the motors, temperature monitors, and so on.
+Firstly, we will implement the local network for EPICS monitoring system with 5 devices at least. In the second stage, we will implement the database of records and establish the analytical procedure of the records. In the third stage, we will connect the local network to the global network of SLRI accesible online. We will test the feed-forward and -back control of the temperture and motion of the sample in the future phase if we have sufficient resources such as the motors, temperature monitors, and so on.
 
-CAs correspond to the devices under the EPICS control and monitoring system. In the first stage, we connected the 5 CAs at least in the BL3.2Ua PES end-station based on a serial device server 16-channel, which is currently available from the department in the section. 5 CAs emcompass the full-range gauge, cold-cathod gauge (CCG), ionization gauge, ion-pump controller, and electrometer/multimeter. Some devices cannot be accessible from the RS232 interface, so the LabVIEW CALab is used to get the record from the CAs such as the diode-type and thermo-couple temperature monitors.
+In the first stage, we connected the 5 devices at least based on the IOC at Raspberry Pi in the BL3.2Ua PES end-station through a serial device server 16-channel, which is currently available from the department in the section. 5 devices emcompass the full-range gauge, cold-cathod gauge (CCG), ionization gauge, ion-pump controller, and electrometer/multimeter. Some devices cannot be accessible from the RS232 interface, so the LabVIEW CALab is used to get the record from the devices such as the diode-type and thermo-couple temperature monitors.
 
 The network switching hub is also available, so we can connect our serial device servers to the other network such as accelerator EPICS network. The control software section (CSS) established the beamline 3.2 otpics vacuum monitoring for 11 CCG gauges based on the serial device server with the NI LabVIEW DSC server previously, and it is now under control of the accelerator EPICS network to monitor the front-end pressure during the beamline alignment and injection inefficiency. Before the injection inefficiency took place, we successfully established the local EPICS network with two serial device servers from the beamline 3.2 optics vaccum and 3.2Ua end-station monitoring system.
 
@@ -50,7 +50,7 @@ https://note.com/dev_associate
 
 ## Hardware
 
-Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. CA devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more serial device servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
+Typical configuration of EPICS is based on the serial port communication over the ethernet network. In the initial stage, the EPICS shares within the local network via the switching hub. Devices are connected to the serial device server at each end station plus BL control station. PES has a serial device server 16 channels, and 2 more serial device servers will be implemented in PEEM and XPS stations in the following years. BL control station has a serial device server implemented by the control software section (CSS), but the accelerator section takes over the serial device server control. EPICS is primary running in the Raspberry Pi, and CALab 64-bit extends the channel access for the LabVIEW2019 in Windows PC.
 
 ### Serial device server: MOXA NPort 5650-16
 https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5600-series
@@ -70,7 +70,7 @@ https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
 
 ## Software
 
-The following software is useful to develop the CA communications. The st.cmd file specifies the connection to each device according to the following syntax;
+The following software is useful to develop the device communications. The st.cmd file specifies the connection to each device according to the following syntax;
 ```
 sys=System, sec=Section, dev=Device.
 ```
@@ -125,7 +125,7 @@ https://www.rapidtables.com/convert/number/hex-to-ascii.html
 http://facweb.cs.depaul.edu/sjost/it212/documents/ascii-pr.htm
 
 
-## CA device manual and script
+## Device manual and script
 
 The following devices are ppotential candidates for CAs in the EPICS monitoring system. The detailed resources are listed below.
 
@@ -143,7 +143,7 @@ https://github.com/mehmetbozdogan/arunNgc2dUhvPressureGauge
 
 ### Agilent Digital Multimeter 34401A 6-1/2 digit multimeter
 
-Multimeter is tested as one of CA devices. The only one of voltage, current, and registivity can be monitored at a time.
+Multimeter is tested as one of devices. The only one of voltage, current, and registivity can be monitored at a time.
 
 #### Manual
 http://instructor.physics.lsa.umich.edu/adv-labs/Tools_Resources/HP%2034401A%20user%27s%20guide.pdf
@@ -252,7 +252,7 @@ http://ahfb1.kek.jp/~tobiyama/epics/default.html
 
 ## Progress and summary
 
-`20240306` 6 devices are connected to the EPICS via the serial device server, and 2 CAs are connected online via CALab from the Windows PC in the PES station. The serial device server in the beamline control station connects and shares the vacuum pressures from 11 CCG gauges.
+`20240306` 6 devices are connected to the EPICS via the serial device server, and 2 devices are connected online via CALab from the Windows PC in the PES station. The serial device server in the beamline control station connects and shares the vacuum pressures from 11 CCG gauges.
 
 
 
