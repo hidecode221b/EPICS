@@ -38,6 +38,9 @@ https://cerldev.kek.jp/trac/EpicsUsersJP
 
 ### Others
 
+#### EPICS Notes by Michael Davidsaver
+https://mdavidsaver.github.io/epics-doc/
+
 #### KEK LINAC
 https://www-linac.kek.jp/cont/epics/
 
