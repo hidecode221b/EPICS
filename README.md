@@ -113,6 +113,10 @@ SerialTool can add various CRC as the sum check protocols. The free version is l
 
 https://serialtool.com/
 
+### QModMaster
+Modbus RS485 testing. "starting address" should be a value +1.
+
+https://github.com/zhanglongqi/qModMaster
 
 ## String convertion
 
@@ -208,7 +212,7 @@ https://www.boydcorp.com/thermal/liquid-cooling-systems/chillers.html
 
 ### Wattsine RF power supply (433MHz-200W-CCFA Solid State Microwave Power Generator)
 
-RF power supply is used in the VUV light source. The connection is established but the communication failed.
+RF power supply is used in the VUV light source. The Modbus RS485 connection is established but the communication failed. Modbus serial and TCP/IP can be configured at the setup with the code "1900".
 
 #### Manual
 https://www.wattsine.com/productview-11-1.html
@@ -223,6 +227,12 @@ https://www.lakeshore.com/docs/default-source/product-downloads/335_manual.pdf
 
 #### Script
 https://github.com/epics-modules/ip/blob/master/ipApp/Db/LakeShore335.db
+
+#### VI
+https://github.com/pinghanchu/LakeShore_335
+
+http://sine.ni.com/apps/utf8/niid_web_display.model_page?p_model_id=19074
+
 
 
 ### NI SCB-68 shielded I/O connector block for the NI multifunction card PCI-6052E
