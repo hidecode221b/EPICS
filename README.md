@@ -83,6 +83,8 @@ CALab is indispenable when the device has an interface only with USB or PCI for 
 https://github.com/epics-extensions/CALab
 
 ### PyEpics
+PyEpics can perform caget and caput if the IOCs are available within the network.
+
 https://pypi.org/project/pyepics/
 
 ### Control System Studio (CSS)
