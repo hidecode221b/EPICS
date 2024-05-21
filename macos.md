@@ -148,4 +148,17 @@ caput('calc:b',10)
 caget('calc:sum')
 ```
 
+### Device support
+
+Follow thr link below
+
+https://mdavidsaver.github.io/epics-doc/epics-devsup.html
+
+## Testing
+
+macos should change `linux-x86` to `darwin-x86`.
+
+
+
+
 
