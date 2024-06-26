@@ -2,7 +2,7 @@
 
 ## Preface
 
-This report is a progress report of the first phase as of Feb. 2024, and revised upon the development progress accordingly.
+This report is a progress report of the first phase as of Jun. 2024, and revised upon the development progress accordingly.
 
 ## Background
 
@@ -267,7 +267,10 @@ http://ahfb1.kek.jp/~tobiyama/epics/default.html
 
 ## Progress and summary
 
-`20240306` 6 devices are connected to the EPICS via the serial device server, and 2 devices are connected online via CALab from the Windows PC in the PES station. The serial device server in the beamline control station connects and shares the vacuum pressures from 11 CCG gauges.
+`20240306` 8 devices (Ion gauge, IP controller, cryostat temp control, electrometer, multimeter, full range gauge, cold cathode gauge, multifunction SCB68) are connected to EPICS via the serial device server, and 2 IOCs are connected online via Raspberry pi and CALab from the Windows PC in the PES station. The 16-ch serial device server in the beamline interlock system was successfully integrated with our EPICS network for 11 CCG gauges at BL3.2U, but the accelerator division overtook the serial device server for their EPICS network to monitor the front-end pressures.
+
+`20240626` Modbus RS485 was tested by QModMater program to the RF power supply used in the VUV light source, but the communication error still appears. Additional IOC was setup in Macbook Pro and connected successfully. PyEPICS was tested from Macbook Pro and successfully implemented.
+
 
 
 
